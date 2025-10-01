@@ -93,25 +93,57 @@ https://github.com/user-attachments/assets/4ccd316b-74a1-4bae-9bc7-1c705be80498
 <br><br>
 
 
-
-
 # K-Means Clustering Repository Presentation
 
 This repository contains the full presentation and step-by-step application of the K-Means clustering algorithm. The goal is to demonstrate the process from data preprocessing, through model evaluation, to the final conclusion about the optimal number of clusters, based on an included PDF presentation. This provides a comprehensive, practical example of unsupervised clustering for educational and analytical purposes.
 
----
+<br>
 
 # Use of the K-Means Algorithm
 
 This repository contains the step-by-step application of the K-Means clustering algorithm on a dataset, including data preprocessing, model evaluation, and final conclusions.
 
 
+ K-Means Clustering Repository Presentation
+
+This repository contains the full presentation and step-by-step application of the K-Means clustering algorithm. The goal is to demonstrate the process from data preprocessing, through model evaluation, to the final conclusion about the optimal number of clusters, based on an included PDF presentation. This provides a comprehensive, practical example of unsupervised clustering for educational and analytical purposes.
+
+<br>
+
+# Use of the K-Means Algorithm
+
+This repository contains the step-by-step application of the K-Means clustering algorithm on a dataset, including data preprocessing, model evaluation, and final conclusions.
+
+<br>
+
+## Data Preprocessing
+
+The dataset initially contained 3 columns, but only "Column1" and "Column2" were used after dropping the "Unnamed: 0" index column, resulting in 2 columns and 9,308 rows.
+
+The data plot shows that the dataset is suitable for clustering, with an initial hypothesis of 4 to 6 groups to be validated later using the elbow method and silhouette index.
+
+Notably, there are 2 missing values per column, which were imputed using the mean of each column, as K-Means does not handle missing values.
+
+<br>
 
 
+```python
+df['Column1'] = df['Column1'].fillna(df['Column1'].mean())  \# Fill NaNs with mean
+df['Column2'] = df['Column2'].fillna(df['Column2'].mean())  \# Fill NaNs with mean
+```
+
+<br>
+
+Duplicate values were identified and removed to avoid redundancy in clustering.
+
+<br>
 
 
+```python
+df = df.drop_duplicates(subset='Column1', keep='first')
+```
 
-
+<br>
 
 
 
