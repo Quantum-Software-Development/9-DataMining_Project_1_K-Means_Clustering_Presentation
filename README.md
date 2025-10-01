@@ -109,7 +109,7 @@ This repository contains the full presentation and step-by-step application of t
 <br><br>
 
 
-## What is K-Means?
+## [What is K-Means?]()
 
 K-Means is a popular unsupervised machine learning algorithm used for clustering data. Its primary purpose is to partition a dataset into a pre-specified number of distinct, non-overlapping groups called "clusters." The "K" in K-Means refers to the number of clusters the user wants to identify.
 
@@ -119,7 +119,7 @@ The algorithm works by grouping data points that are similar to each other based
 <br><br>
 
 
-Type of Algorithm
+## [Type of Algorithm]()
 
 K-Means is an example of a "hard" clustering algorithm because each data point belongs to exactly one cluster. It is an iterative centroid-based clustering method that aims to minimize the within-cluster variance (sum of squared distances from points to their cluster centroid).
 
@@ -129,7 +129,7 @@ Because it is unsupervised learning, it does not require labeled data.
 <br><br>
 
 
-## When to Use K-Means
+## [When to Use K-Means]()
 
 - When you have a dataset without labels and want to discover natural groupings based on feature similarities.
 - When clusters are expected to be spherical or roughly equally sized, as K-Means works best in these cases.
@@ -141,7 +141,7 @@ Because it is unsupervised learning, it does not require labeled data.
 <br><br>
 
 
-## When Not to Use K-Means
+## [When Not to Use K-Means]()
 
 - If clusters in data are non-spherical, overlapping, or have very different sizes or densities, K-Means may not perform well.
 - When the number of clusters K is not known and difficult to estimate.
@@ -200,10 +200,11 @@ df['Column1'] = df['Column1'].fillna(df['Column1'].mean())  \# Fill NaNs with me
 df['Column2'] = df['Column2'].fillna(df['Column2'].mean())  \# Fill NaNs with mean
 ```
 
-<br>
+<br><br>
 
 
-### [Duplicate Values]()
+
+## [Duplicate Values]()
 
 Duplicate rows were checked in each column to avoid redundant data points in clustering.
 
@@ -218,16 +219,15 @@ df = df.drop_duplicates(subset='Column1', keep='first')
 
 <br><br>
 
+This resulted in 9,299 rows and 2 columns ready for further processing.
 
 
+<br><br>
 
 
--=====////
 ## [Data Normalization]()
 
-Since K-Means is sensitive to scale due to its use of distances, MinMaxScaler was applied to scale the data into the [0,1] range.
-
-<br>
+K-Means clustering is sensitive to the scale of features since it relies on distance calculations. To avoid magnitude bias, the data was normalized to a [0,1] scale using MinMaxScaler.
 
 
 ```python
@@ -237,20 +237,25 @@ scaler = MinMaxScaler()
 standard_df = pd.DataFrame(scaler.fit_transform(df), columns=df.columns)
 ```
 
-<br>
 
-The normalized data had minimum values of 0 and maximum values of 1 for both columns, ensuring fair comparison.
-
-
-<br>
+The normalized dataset had minimum values of 0 and maximum values of 1 for both columns, confirming correct scaling.
 
 
+<br><br>
 
-## [Choosing the Number of Clusters (K)]()
 
-The Elbow Method was used to explore values of K from 2 to 10 by plotting the inertia (sum of squared distances to cluster centers).
+## [Determining the Number of Clusters (Choosing K)]()
 
 <br>
+
+### The Elbow Method
+
+The Elbow Method analyzes the total within-cluster sum of squares (inertia) for different values of K (number of clusters). The goal is to identify the "elbow" point where the inertia reduction rate sharply declines, indicating an optimal K.
+
+The script runs KMeans clustering for K from 2 to 10 and stores the inertia values:
+
+
+<br><br>
 
 ```python
 from sklearn.cluster import KMeans
@@ -264,41 +269,63 @@ inertia_values.append(kmeans.fit(standard_df).inertia_)
 
 plt.figure(figsize=(10, 6))
 sns.lineplot(x=range(2, 11), y=inertia_values, marker='o')
+
+plt.gca().spines['top'].set_visible(False)
+plt.gca().spines['right'].set_visible(False)
+plt.gca().spines['left'].set_visible(False)
+
 plt.title('Elbow Method')
-plt.xlabel('Number of Clusters (k)')
+plt.xlabel('Number of clusters (k)')
 plt.ylabel('Inertia')
-plt.axvline(x=3, color='\#D86565', linestyle='--')
-plt.axvline(x=5, color='\#D86565', linestyle='--')
+
+plt.axvline(x=3, color='\#D86565', linestyle='--')  \# Candidate K=3
+plt.axvline(x=5, color='\#D86565', linestyle='--')  \# Candidate K=5
+
 plt.show()
 ```
 
-<br>
+<br><br>
 
-Analysis of the plot showed sharp decreases in inertia from K=2 to K=3 and significant further decrease until K=5, after which the curve leveled off, indicating potential K values of 3 or 5.
+### [Elbow Plot Analysis]()
 
-<br>
+- There is a sharp drop in inertia from \(K=2\) to \(K=3\).
+- The decrease continues but less steep until \(K=5\), after which the curve flattens.
+- The plot suggests two potential "elbows" at \(K=3\) and \(K=5\), indicating ambiguity in choosing between these two values solely based on the elbow method.
+
+<br><br>
+
+
+<p align="center">
+ <img src="https://github.com/user-attachments/assets/73998bea-efe5-4d72-8f4b-fa25b021fc80
+
+
+<br><br>
+
 
 ## [Silhouette Score Evaluation]()
 
-To quantitatively validate the best K, the silhouette score was calculated for K values 3, 4, and 5.
+The silhouette score is a metric that evaluates cluster quality by assessing how similar each point is to its own cluster compared to other clusters. Scores range from -1 to 1, where a high positive score indicates well-separated, coherent clusters.
+
+The silhouette scores were calculated for \(K=3, 4, 5\):
 
 
-<br>
+<br><br>
+
 
 ```python
 from sklearn.metrics import silhouette_score
 import pandas as pd
 
 scores = []
-for k in :[^3][^4][^5]
+for k in :
 kmeans = KMeans(n_clusters=k, random_state=43)
 labels = kmeans.fit_predict(standard_df)
 scores.append(silhouette_score(standard_df, labels))
 
-pd.DataFrame({'K': , 'Silhouette Score': scores})[^4][^5][^3]
+pd.DataFrame({'K': , 'Silhouette Score': scores})
 ```
 
-<br>
+<br><br>
 
 
 | [K]() | [Silhouette Score]() |
@@ -307,96 +334,59 @@ pd.DataFrame({'K': , 'Silhouette Score': scores})[^4][^5][^3]
 | 4 | 0.700            |
 | 5 | 0.671            |
 
+
+
 <br>
 
-The silhouette score clearly favored \( K=4 \), indicating the best balance of cohesion and separation.
-
-<br>
+The silhouette score clearly favors \(K=4\), showing the best balance of cluster cohesion and separation among tested values.
 
 
-## [Visualizing Clusters for K=3, 4, and 5]()
+<br><br>
 
-Scatter plots were created for clusters with K=3, 4, and 5, including centroids, allowing visual examination.
 
-<br>
+## [Visual Cluster Analysis]()
+
+Scatter plots of clusters for \(K=3\), \(K=4\), and \(K=5\) were generated, including marked centroids, for intuitive visual evaluation.
+
+
+<br><br>
+
 
 ```python
+import seaborn as sns
+import matplotlib.pyplot as plt
+
 fig, axes = plt.subplots(3, 1, figsize=(14, 20))
-for ax, k in zip(axes, ):[^5][^3][^4]
+for ax, k in zip(axes, ):
 kmeans = KMeans(n_clusters=k, random_state=43)
 kmeans.fit(standard_df)
-standard_df['Cluster'] = kmeans.labels_
-sns.scatterplot(data=standard_df, x='Column1', y='Column2', hue='Cluster', palette='Set2', ax=ax)
-sns.scatterplot(x=kmeans.cluster_centers_[:, 0], y=kmeans.cluster_centers_[:, 1], color='black', marker='X', s=150, label='Centroids', ax=ax)
-ax.set_title(f'K = {k}')
-ax.set_xlabel('Column1')
-ax.set_ylabel('Column2')
-ax.legend(loc='upper left')
-plt.show()
+
+    data_with_clusters = standard_df.copy()
+    data_with_clusters['Cluster'] = kmeans.labels_
+    
+    sns.scatterplot(data=data_with_clusters, x='Column1', y='Column2', hue='Cluster', palette='Set2', legend='full', ax=ax)
+    sns.scatterplot(x=kmeans.cluster_centers_[:, 0], y=kmeans.cluster_centers_[:, 1], s=150, color='black', marker='X', label='Centroids', ax=ax)
+    
+    ax.set_title(f'K = {k}')
+    ax.set_xlabel('Column 1')
+    ax.set_ylabel('Column 2')
+    ax.legend(loc='upper left')
+    
+    ax.spines['top'].set_visible(False)
+    ax.spines['right'].set_visible(False)
+    ax.spines['left'].set_visible(False)
+    ax.grid(axis='y', linestyle='--', alpha=0.7)
+    plt.show()
 ```
 
-<br>
+<br><br>
 
 
-### [Visual analysis suggested]():
-
-- K=3 groups clusters well but a large cluster seems to contain two distinct groups.
-- 
-- K=5 splits this large cluster into two but other cluster separations may be less ideal.
-  
-- K=4 provided the most natural and clearly separated clusters, matching spatial data distribution intuitively.
-
-<br>
+<p align="center">
+ <img src="https://github.com/user-attachments/assets/4846f376-9899-44d2-a17e-40adcda974a1" /<
 
 
-## [Descriptive Statistics by Cluster (K=4)]()
-
-Cluster-wise descriptive statistics were computed to understand characteristics per group.
-
-<br>
-
-
-[Example snippet]():
-
-<br>
-
-| Cluster | Count | Mean Column1 | Mean Column2 |
-|---------|-------|--------------|--------------|
-| 0       | 1329  | 8.19         | 6.10         |
-| 1       | 5311  | -4.53        | -4.98        |
-| 2       | 1331  | 8.93         | -8.13        |
-| 3       | 1328  | 0.35         | 9.58         |
-
-
-<br>
-
-
-## [Final Conclusion]()
-
-- The Elbow Method was inconclusive, suggesting candidates \( K=3 \) or \( K=5 \).
-  
-- The silhouette score clearly favored \( K=4 \) with the highest score of 0.699.
-  
-- Visual inspection reinforced the choice of \( K=4 \), showing the most intuitive and spatially distinct clusters.
-  
-- Hence, using K-Means with \( K=4 \) is the best-supported decision combining quantitative metrics and visual understanding.
-
-<br>
-
-
-## [End of Analysis]()
-
-The included presentation PDF and this repository provide a full practical guide to the use of K-Means clustering, from data preparation to model evaluation and selection.
-
-
-
-
-
-
-
-
-
-
+<br><br>
 
 
 
