@@ -169,37 +169,13 @@ The normalized data had minimum values of 0 and maximum values of 1 for both col
 <br>
 
 
-## Choosing the Number of Clusters (K)
 
-The Elbow Method was used to explore values of K from 2 to 10 by plotting the inertia (sum of squared distances to cluster centers).
 
-<br>
 
-```python
-from sklearn.cluster import KMeans
-import matplotlib.pyplot as plt
-import seaborn as sns
 
-inertia_values = []
-for k in range(2, 11):
-kmeans = KMeans(n_clusters=k, random_state=42)
-inertia_values.append(kmeans.fit(standard_df).inertia_)
 
-plt.figure(figsize=(10, 6))
-sns.lineplot(x=range(2, 11), y=inertia_values, marker='o')
-plt.title('Elbow Method')
-plt.xlabel('Number of Clusters (k)')
-plt.ylabel('Inertia')
-plt.axvline(x=3, color='\#D86565', linestyle='--')
-plt.axvline(x=5, color='\#D86565', linestyle='--')
-plt.show()
-```
 
-<br>
 
-Analysis of the plot showed sharp decreases in inertia from K=2 to K=3 and significant further decrease until K=5, after which the curve leveled off, indicating potential K values of 3 or 5.
-
-<br>
 
 
 
