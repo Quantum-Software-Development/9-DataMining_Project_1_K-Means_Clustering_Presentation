@@ -298,11 +298,11 @@ Cluster-wise descriptive statistics were computed to understand characteristics 
 ## [Final Conclusion]()
 
 - The Elbow Method was inconclusive, suggesting candidates \( K=3 \) or \( K=5 \).
-- 
+  
 - The silhouette score clearly favored \( K=4 \) with the highest score of 0.699.
-- 
+  
 - Visual inspection reinforced the choice of \( K=4 \), showing the most intuitive and spatially distinct clusters.
-- 
+  
 - Hence, using K-Means with \( K=4 \) is the best-supported decision combining quantitative metrics and visual understanding.
 
 <br>
