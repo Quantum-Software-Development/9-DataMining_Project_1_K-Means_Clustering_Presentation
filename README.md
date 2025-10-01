@@ -389,6 +389,59 @@ kmeans.fit(standard_df)
 <br><br>
 
 
+## Visual Analysis of Clusters
+
+- **K=3:** The clustering appears reasonable overall, but one large cluster (orange) on the left looks extensive and seems to contain two distinct “clouds” of points that could be separated better.
+- **K=5:** This splits the large orange cluster from K=3 into two smaller clusters (orange and light green). This captures some substructure but the separation among other clusters may not be as optimized.
+- **K=4:** Appears most natural and interpretable. Clearly separates the four main visible groups in the data. Each cluster is dense and well-defined. For example, it distinguishes the upper-middle group (pink) from the right group (teal), which K=3 does not.
+
+
+<br><br>
+
+
+## Cluster Descriptive Statistics (for \(K=4\))
+
+Descriptive statistics were computed per cluster to characterize their properties quantitatively:
+
+<br>
+
+| Cluster | Count | Mean Column1 | Mean Column2 |
+|---------|-------|--------------|--------------|
+| 0       | 1329  | 8.19         | 6.10         |
+| 1       | 5311  | -4.53        | -4.98        |
+| 2       | 1331  | 8.93         | -8.13        |
+| 3       | 1328  | 0.35         | 9.58         |
+
+
+<br>
+
+These statistics help understand the spatial distribution and size of each cluster in feature space.
+
+<br><br>
+
+
+## Final Conclusion
+
+- The Elbow Method was inconclusive, pointing to \(K=3\) or \(K=5\) as possible choices without a definitive answer.
+- The silhouette score provided a clear quantitative preference for \(K=4\), with the highest score of 0.699.
+- Visual inspection of cluster plots confirmed that \(K=4\) produced the most intuitive and clearly separated clusters, aligning well with the spatial data structure.
+- Therefore, the decision to proceed with K-Means using \(K=4\) clusters is well supported, combining strong evaluation metrics with logical and interpretable visual results.
+
+<br><br>
+
+
+## Summary
+
+This repository and its accompanying presentation PDF provide a full, practical example of using the K-Means clustering algorithm, starting from data cleaning and preprocessing, through determination of the optimal number of clusters by multiple methods, and ending with qualitative and quantitative validation of the results.
+
+
+
+
+
+
+
+
+
 
 
 
