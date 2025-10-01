@@ -280,7 +280,9 @@ Cluster-wise descriptive statistics were computed to understand characteristics 
 <br>
 
 
-Example snippet:
+[Example snippet]():
+
+<br>
 
 | Cluster | Count | Mean Column1 | Mean Column2 |
 |---------|-------|--------------|--------------|
@@ -293,7 +295,7 @@ Example snippet:
 <br>
 
 
-## Final Conclusion
+## [Final Conclusion]()
 
 - The Elbow Method was inconclusive, suggesting candidates \( K=3 \) or \( K=5 \).
 - 
@@ -306,7 +308,7 @@ Example snippet:
 <br>
 
 
-## End of Analysis
+## [End of Analysis]()
 
 The included presentation PDF and this repository provide a full practical guide to the use of K-Means clustering, from data preparation to model evaluation and selection.
 
