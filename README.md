@@ -155,7 +155,7 @@ In these cases, other clustering methods such as DBSCAN, hierarchical clustering
 <br><br>
 
 
-## Data Preprocessing
+## [Data Preprocessing]()
 
 The original dataset consisted of multiple columns, but only “Column1” and “Column2” were used for the analysis. The column "Unnamed: 0", which was merely an index without analytical value, was dropped. The final dataset contains 2 columns and 9,308 rows.
 
@@ -163,26 +163,27 @@ The original dataset consisted of multiple columns, but only “Column1” and �
 <br><br>
 
 
-## Data Exploration
+## [Data Exploration]()
 
 A plot of the original data was constructed to explore its behavior visually. The visual inspection suggested the data was suitable for clustering using the K-Means model. The initial hypothesis was the presence of 4 to 6 groups. However, this estimate was to be confirmed later through the elbow method and silhouette analysis.
 
 
 <br><br>
 
+### [Original Data Plot]()
+
+<br><br>
+
+<p align="center">
+ <img src="https://github.com/user-attachments/assets/085453d4-d6b1-49eb-9373-531c7510128b" />
+
+<br><br>
 
 
-
-
-=====///////////////
-
-# [Use of the K-Means Algorithm]()
-
-This repository contains the step-by-step application of the K-Means clustering algorithm on a dataset, including data preprocessing, model evaluation, and final conclusions.
-
-<br>
 
 ## [Data Preprocessing]()
+
+There were 2 missing values per column (9,306 non-null values out of 9,308). Since the K-Means algorithm cannot handle missing values, these were imputed using the mean of each respective column to enable modeling.
 
 The dataset initially contained 3 columns, but only "Column1" and "Column2" were used after dropping the "Unnamed: 0" index column, resulting in 2 columns and 9,308 rows.
 
@@ -190,7 +191,8 @@ The data plot shows that the dataset is suitable for clustering, with an initial
 
 Notably, there are 2 missing values per column, which were imputed using the mean of each column, as K-Means does not handle missing values.
 
-<br>
+
+<br><br>
 
 
 ```python
@@ -200,19 +202,27 @@ df['Column2'] = df['Column2'].fillna(df['Column2'].mean())  \# Fill NaNs with me
 
 <br>
 
-Duplicate values were identified and removed to avoid redundancy in clustering.
 
-<br>
+### [Duplicate Values]()
+
+Duplicate rows were checked in each column to avoid redundant data points in clustering.
+
+Code was used to list duplicates in “Column1” and “Column2” separately:
+
+<br><br>
 
 
 ```python
 df = df.drop_duplicates(subset='Column1', keep='first')
 ```
 
-<br>
+<br><br>
 
 
 
+
+
+-=====////
 ## [Data Normalization]()
 
 Since K-Means is sensitive to scale due to its use of distances, MinMaxScaler was applied to scale the data into the [0,1] range.
