@@ -6,7 +6,8 @@
 
 <br><br>
 
-# 9- [Data Mining]()  / [XXXXXXXXXXXXXX]()
+# 9- [Data Mining]()  / [ K-Means Clustering Repository Presentation]()
+
 
 
 
@@ -93,6 +94,16 @@ https://github.com/user-attachments/assets/4ccd316b-74a1-4bae-9bc7-1c705be80498
 
 
 
+
+# K-Means Clustering Repository Presentation
+
+This repository contains the full presentation and step-by-step application of the K-Means clustering algorithm. The goal is to demonstrate the process from data preprocessing, through model evaluation, to the final conclusion about the optimal number of clusters, based on an included PDF presentation. This provides a comprehensive, practical example of unsupervised clustering for educational and analytical purposes.
+
+---
+
+# Use of the K-Means Algorithm
+
+This repository contains the step-by-step application of the K-Means clustering algorithm on a dataset, including data preprocessing, model evaluation, and final conclusions.
 
 
 
