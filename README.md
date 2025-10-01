@@ -90,25 +90,91 @@ https://github.com/user-attachments/assets/4ccd316b-74a1-4bae-9bc7-1c705be80498
 <!-- =======================================END DEFAULT HEADER ===========================================  -->
 
 
-<br><br>
+<br><br><br>
 
 
-# [K-Means Clustering Repository Presentation]()
+
+# [K-Means Algorithm - Clustering - Presentation]()
 
 This repository contains the full presentation and step-by-step application of the K-Means clustering algorithm. The goal is to demonstrate the process from data preprocessing, through model evaluation, to the final conclusion about the optimal number of clusters, based on an included PDF presentation. This provides a comprehensive, practical example of unsupervised clustering for educational and analytical purposes.
 
-<br>
 
-# [Use of the K-Means Algorithm]()
-
-This repository contains the step-by-step application of the K-Means clustering algorithm on a dataset, including data preprocessing, model evaluation, and final conclusions.
+<br><br>
 
 
 [ K-Means Clustering Repository Presentation]()
 
 This repository contains the full presentation and step-by-step application of the K-Means clustering algorithm. The goal is to demonstrate the process from data preprocessing, through model evaluation, to the final conclusion about the optimal number of clusters, based on an included PDF presentation. This provides a comprehensive, practical example of unsupervised clustering for educational and analytical purposes.
 
-<br>
+<br><br>
+
+
+## What is K-Means?
+
+K-Means is a popular unsupervised machine learning algorithm used for clustering data. Its primary purpose is to partition a dataset into a pre-specified number of distinct, non-overlapping groups called "clusters." The "K" in K-Means refers to the number of clusters the user wants to identify.
+
+The algorithm works by grouping data points that are similar to each other based on a distance metric, usually Euclidean distance. Each cluster is represented by its centroid, which is the mean position of all points within that cluster. K-Means iteratively adjusts the centroids and reassigns points to clusters until the clusters are stable or a set number of iterations is reached.
+
+
+<br><br>
+
+
+Type of Algorithm
+
+K-Means is an example of a "hard" clustering algorithm because each data point belongs to exactly one cluster. It is an iterative centroid-based clustering method that aims to minimize the within-cluster variance (sum of squared distances from points to their cluster centroid).
+
+Because it is unsupervised learning, it does not require labeled data.
+
+
+<br><br>
+
+
+## When to Use K-Means
+
+- When you have a dataset without labels and want to discover natural groupings based on feature similarities.
+- When clusters are expected to be spherical or roughly equally sized, as K-Means works best in these cases.
+- When you know or can estimate the number of clusters (K) in advance.
+- When computational efficiency is important, as K-Means is relatively fast and scalable to large datasets.
+- For applications like market segmentation, image compression, document clustering, and pattern recognition.
+
+
+<br><br>
+
+
+## When Not to Use K-Means
+
+- If clusters in data are non-spherical, overlapping, or have very different sizes or densities, K-Means may not perform well.
+- When the number of clusters K is not known and difficult to estimate.
+- When the data contains many outliers, since K-Means is sensitive to outliers which can distort centroids.
+- For categorical or non-numeric data without proper encoding or different distance metrics.
+- When clusters have complex shapes that cannot be approximated well by centroids.
+
+In these cases, other clustering methods such as DBSCAN, hierarchical clustering, or Gaussian mixture models might be more appropriate.
+
+
+<br><br>
+
+
+## Data Preprocessing
+
+The original dataset consisted of multiple columns, but only “Column1” and “Column2” were used for the analysis. The column "Unnamed: 0", which was merely an index without analytical value, was dropped. The final dataset contains 2 columns and 9,308 rows.
+
+
+<br><br>
+
+
+## Data Exploration
+
+A plot of the original data was constructed to explore its behavior visually. The visual inspection suggested the data was suitable for clustering using the K-Means model. The initial hypothesis was the presence of 4 to 6 groups. However, this estimate was to be confirmed later through the elbow method and silhouette analysis.
+
+
+<br><br>
+
+
+
+
+
+=====///////////////
 
 # [Use of the K-Means Algorithm]()
 
