@@ -434,7 +434,7 @@ These statistics help understand the spatial distribution and size of each clust
 <br><br>
 
 
-## [Summaryn]()
+## [Summary]()
 
 This repository and its accompanying presentation PDF provide a full, practical example of using the K-Means clustering algorithm, starting from data cleaning and preprocessing, through determination of the optimal number of clusters by multiple methods, and ending with qualitative and quantitative validation of the results.
 
